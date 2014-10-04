@@ -97,8 +97,8 @@ Presenting each primitive is out of scope, but for illustrative purposes the req
 ```scala
 val request = "Some request binary".getBytes
 Try(connection.request("echo", request, 1000)) match {
-    case Success(reply) => System.out.println("Reply arrived: " + new String(reply))
-    case Failure(error) => System.out.println("Failed to execute request: " + error.getMessage)
+    case Success(reply) => println("Reply arrived: " + new String(reply))
+    case Failure(error) => println("Failed to execute request: " + error.getMessage)
 }
 ```
 
@@ -114,10 +114,10 @@ Additionally, the requests/reply pattern supports sending back an error instead 
 try {
     connection.request("echo", request, 1000)
 } catch {
-    case e: TimeoutException => System.out.println("Request timed out")
-    case e: ClosedException  => System.out.println("Connection terminated")
-    case e: RemoteException  => System.out.println("Request failed remotely")
-    case e: IOException      => System.out.println("Requesting failed locally")
+    case e: TimeoutException => println("Request timed out")
+    case e: ClosedException  => println("Connection terminated")
+    case e: RemoteException  => println("Request failed remotely")
+    case e: IOException      => println("Requesting failed locally")
 }
 ```
 
